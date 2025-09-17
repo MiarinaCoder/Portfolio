@@ -1,4 +1,4 @@
-# Portfolio React – mIARINA
+# Portfolio React – MIARINA
 
 Un portfolio personnel créé avec React.js, pour présenter mes compétences, mes projets et me contacter facilement.
 
