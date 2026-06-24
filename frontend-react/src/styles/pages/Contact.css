@@ -1,0 +1,115 @@
+.contact-page {  background-color: #f5f7f8;
+  min-height: 100vh;
+  padding: 80px 20px;
+}
+
+.contact-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 48px;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.contact-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.contact-header-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, #6b9aaf 0%, #58899c 100%);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(107, 154, 175, 0.3);
+}
+
+.contact-title {
+  color: #2c3e50;
+  font-size: 2.5rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+}
+
+.form-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 40px 70px 40px 40px;
+  border: 1px solid rgba(107, 154, 175, 0.1);
+}
+
+.submitted-banner {
+  margin-bottom: 24px;
+  padding: 16px;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.submitted-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #28a745;
+  border-radius: 50%;
+}
+
+.form-field { display:flex; flex-direction:column; gap:8px; }
+.field-label { display:flex; align-items:center; gap:8px; font-size:0.875rem; font-weight:600; color:#333; margin-bottom:8px; }
+.input, .textarea { width:100%; padding:12px 16px; background-color:#f8f9fa; border:2px solid #e0e0e0; border-radius:10px; font-size:16px; transition:all .3s; outline:none; }
+.textarea { padding:16px; resize:vertical; min-height:180px; line-height:1.6; font-family:inherit; }
+.input:focus, .textarea:focus { border-color:#6b9aaf; background-color:#ffffff; box-shadow:0 0 0 3px rgba(107,154,175,0.1); }
+
+.contact-page .btn-primary { width:100%; background-color:#6b9aaf; color:white; font-weight:600; padding:14px 24px; border:none; border-radius:10px; font-size:16px; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; transition:all .3s; box-shadow:0 2px 8px rgba(107,154,175,0.3); }
+.contact-page .btn-primary:disabled { cursor:not-allowed; opacity:.7; }
+.contact-page .btn-primary:hover:not(:disabled){ background-color:#58899c; transform:translateY(-2px); box-shadow:0 4px 12px rgba(107,154,175,0.4); }
+
+.info-column { display:flex; flex-direction:column; gap:16px; }
+.contact-info-card { background:#fff; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.06); padding:24px; border:1px solid rgba(107,154,175,0.1); transition:all .3s; }
+.contact-info-card:hover{ box-shadow:0 4px 20px rgba(0,0,0,0.1); transform:translateY(-2px); }
+.contact-info-icon { width:48px; height:48px; background-color:rgba(107,154,175,0.1); border-radius:12px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.contact-info-title { font-weight:600; color:#2c3e50; margin-bottom:4px; font-size:1rem; }
+.contact-info-link { color:#6b9aaf; font-size:0.875rem; text-decoration:none; }
+
+@keyframes fadeIn { from { opacity:0; transform:translateY(-20px);} to{ opacity:1; transform:translateY(0);} }
+@keyframes slideDown { from { opacity:0; transform:translateY(-10px);} to{ opacity:1; transform:translateY(0);} }
+@keyframes spin { from{ transform:rotate(0deg);} to{ transform:rotate(360deg);} }
+@keyframes pulse { 0%,100%{ opacity:1;} 50%{ opacity:0.5;} }
+
+.animate-fadeIn{ animation:fadeIn .6s ease-out; }
+.animate-slideDown{ animation:slideDown .4s ease-out; }
+.animate-spin{ animation:spin 1s linear infinite; }
+.animate-pulse{ animation:pulse 2s cubic-bezier(.4,0,.6,1) infinite; }
+
+@media (max-width: 768px) {
+  .form-grid { grid-template-columns: 1fr !important; }
+  .form-card { padding: 28px 20px; }
+  /* Prevent inputs/textarea from overflowing on small screens */
+  .form-card .input,
+  .form-card .textarea {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow-wrap: break-word !important;
+    word-break: break-word !important;
+  }
+}

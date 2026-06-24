@@ -1,30 +1,199 @@
-/* src/styles/Navbar.css */
-.navbar {
+   .navbar {
+    background-color: #6b9aaf;
+    color: #eddfd3;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background-color: #6b9aaf; /* couleur sombre */
-    color: #eddfd3;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    max-width: 1200px;
+    margin: 0 auto;
   }
-  
+
+ /* Logo avec style Fusion-Moderne Soft */
+ .navbar-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.navbar-logo a {
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.navbar-logo a:hover {
+  color: #eddfd3;
+}
+
+.navbar-logo a::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(
+  120deg,
+  #3f6477 0%,
+  #6b9aaf 55%,
+  #b5d3e0 100%
+);
+  transition: width 0.3s ease;
+}
+
+.navbar-logo a:hover::after {
+  width: 120px;
+}
+
   .navbar-links {
     list-style: none;
     display: flex;
     gap: 2rem;
+    margin: 0;
+    padding: 0;
   }
-  
+
   .navbar-links li a {
     text-decoration: none;
     color: #ffffff;
-    transition: color 0.3s;
+    transition: all 0.3s;
+    padding: 0.5rem 0;
+    position: relative;
   }
-  
   .navbar-links li a:hover {
-    color: #fff;
-    font-weight: bold
+    color: #eddfd3;
   }
-  
+  .navbar-links li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #eddfd3;
+    transition: width 0.3s;
+  }
+
+  .navbar-links li a:hover::after {
+    width: 100%;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 101;
+  }
+
+  .hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: #ffffff;
+    margin: 3px 0;
+    transition: all 0.3s;
+    border-radius: 3px;
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+  }
+
+  @media (max-width: 768px) {
+    .hamburger {
+      display: flex;
+    }
+
+    .navbar-links {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      height: 100vh;
+      width: 70%;
+      max-width: 300px;
+      background-color: #5a8599;
+      flex-direction: column;
+      padding: 5rem 2rem 2rem;
+      gap: 1.5rem;
+      transition: right 0.3s ease-in-out;
+      box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .navbar-links.active {
+      right: 0;
+    }
+
+    .navbar-links li {
+      width: 100%;
+    }
+
+    .navbar-links li a {
+      display: block;
+      padding: 1rem 0;
+      font-size: 1.1rem;
+    }
+
+    .navbar-links li a::after {
+      display: none;
+    }
+
+    .navbar-container {
+      padding: 1rem 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+      .navbar-logo a {
+        font-size: 1.5rem;
+        letter-spacing: 0.12em;
+      }
+
+      .navbar-logo a::after {
+        width: 60px;
+      }
+
+    .navbar-container {
+      padding: 0.8rem 1rem;
+    }
+  }
+
+  /* Lien actif */
+.navbar-links li a.active {
+  color: #eddfd3;
+}
+
+.navbar-links li a.active::after {
+  width: 100%;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .navbar-links li a.active {
+    font-weight: 600;
+    padding-left: 0.5rem;
+    border-left: 3px solid #eddfd3;
+  }
+}

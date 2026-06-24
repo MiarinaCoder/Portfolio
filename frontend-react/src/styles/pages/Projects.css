@@ -1,0 +1,663 @@
+/* ─────────────────────────────────────────
+   Tokens
+───────────────────────────────────────── */
+:root {
+  --blue-500: #2574c4;
+  --blue-600: #1a5fa3;
+  --blue-700: #134a82;
+  --blue-50:  #e8f1fb;
+  --teal-50:  #e1f5ee;
+  --teal-800: #085041;
+  --gray-50:  #f8f9fa;
+  --gray-100: #f4f5f7;
+  --gray-200: #e9ecef;
+  --gray-300: #d1d5db;
+  --gray-500: #6b7280;
+  --gray-700: #374151;
+  --gray-900: #111827;
+  --device-body: #1a1a1f;
+  --device-border: #2e2e38;
+  --device-button: #2a2a32;
+  --white: #ffffff;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --shadow-card: 0 2px 16px rgba(0, 0, 0, 0.07);
+  --shadow-hover: 0 10px 32px rgba(37, 116, 196, 0.16);
+  --transition: 0.22s ease;
+  /* Navbar height used to offset anchored scrolls */
+  --navbar-height: 96px;
+}
+
+/* Prevent sticky navbar from covering anchor targets */
+section[id] {
+  scroll-margin-top: calc(var(--navbar-height) + 8px);
+}
+
+/* Give extra offset for contact anchor to ensure visible spacing under navbar */
+#contact {
+  scroll-margin-top: calc(var(--navbar-height) + 24px);
+}
+
+/* ─────────────────────────────────────────
+   Section
+───────────────────────────────────────── */
+body{
+    background-color: #f5f7f8;
+}
+.projects {
+  padding: 80px 24px 100px;
+  max-width: 1100px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* ─────────────────────────────────────────
+   Header
+───────────────────────────────────────── */
+.projects__header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.projects__label {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--blue-500);
+  margin-bottom: 10px;
+}
+.projects__title {
+  font-size: clamp(26px, 5vw, 40px);
+  font-weight: 800;
+  color: var(--gray-900);
+  margin: 0 0 10px;
+}
+.projects__subtitle {
+  font-size: 15px;
+  color: var(--gray-500);
+  margin: 0;
+}
+
+/* ─────────────────────────────────────────
+   Filters
+───────────────────────────────────────── */
+.projects__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 44px;
+}
+.projects__filter-btn {
+  padding: 7px 20px;
+  border-radius: 999px;
+  border: 1.5px solid var(--gray-300);
+  background: transparent;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gray-700);
+  cursor: pointer;
+  transition: border-color var(--transition), background var(--transition), color var(--transition);
+}
+.projects__filter-btn:hover {
+  border-color: #547b88;
+  color: var(--white);
+}
+.projects__filter-btn--active {
+  background: #6b9aaf;
+  border-color: #547b88;
+  color: var(--white);
+}
+
+/* ─────────────────────────────────────────
+   Grid
+───────────────────────────────────────── */
+.projects__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 28px;
+}
+
+/* ─────────────────────────────────────────
+   Project card
+───────────────────────────────────────── */
+.project-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--gray-100);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* ─────────────────────────────────────────
+   Device wrapper (grey stage)
+───────────────────────────────────────── */
+.device-wrap {
+  background: var(--gray-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.device-wrap--laptop {
+  padding: 16px 16px 0;
+}
+.device-wrap--phone {
+  padding: 20px 16px;
+}
+
+/* ── Shared screen / placeholder ── */
+.device__screenshot {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.device__placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 11px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.5;
+  z-index: 1;
+}
+
+/* ─────────────────────────────────────────
+   Laptop mockup
+───────────────────────────────────────── */
+.laptop {
+  width: 100%;
+}
+.laptop__lid {
+  background: var(--device-body);
+  border-radius: 8px 8px 0 0;
+  padding: 8px 8px 0;
+}
+.laptop__cam {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #333;
+  margin: 0 auto 5px;
+}
+.laptop__screen {
+  border-radius: 3px;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: var(--blue-500);
+  position: relative;
+}
+.laptop__screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(60deg, rgba(255,255,255,.05) 0, rgba(255,255,255,.05) 1px, transparent 1px, transparent 32px),
+    repeating-linear-gradient(120deg, rgba(255,255,255,.05) 0, rgba(255,255,255,.05) 1px, transparent 1px, transparent 32px);
+  z-index: 0;
+}
+.laptop__base {
+  background: var(--device-button);
+  height: 12px;
+  border-radius: 0 0 6px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.laptop__notch {
+  width: 52px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--device-body);
+}
+.laptop__foot {
+  width: 100%;
+  height: 4px;
+  background: #3a3a42;
+  border-radius: 0 0 4px 4px;
+}
+
+/* ─────────────────────────────────────────
+   Android phone mockup — HQ
+───────────────────────────────────────── */
+.device-wrap--phone { padding: 28px 20px 24px; }
+
+.phone {
+  background: linear-gradient(160deg, #2a2a35 0%, #1a1a22 40%, #111118 100%);
+  border-radius: 40px;
+  padding: 14px 10px;
+  position: relative;
+  width: 210px;
+  flex-shrink: 0;
+  box-shadow:
+    0 0 0 1px #3a3a48,
+    inset 0 1px 0 rgba(255,255,255,0.07),
+    inset 0 -1px 0 rgba(0,0,0,0.5),
+    4px 16px 48px rgba(0,0,0,0.5),
+    0 2px 8px rgba(0,0,0,0.35);
+}
+/* Reflet latéral */
+.phone::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 15%; bottom: 15%;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.07), transparent);
+}
+
+/* Boutons physiques */
+.phone__btn {
+  position: absolute;
+  width: 3px;
+  border-radius: 2px 0 0 2px;
+  box-shadow: -1px 0 2px rgba(0,0,0,0.5);
+  background: linear-gradient(to right, #111, #2a2a35);
+}
+.phone__btn--vol1 { left: -3px; top: 75px;  height: 28px; }
+.phone__btn--vol2 { left: -3px; top: 112px; height: 42px; }
+.phone__btn--vol3 { left: -3px; top: 162px; height: 42px; }
+.phone__btn--pwr  {
+  right: -3px; top: 108px; height: 50px;
+  border-radius: 0 2px 2px 0;
+  background: linear-gradient(to left, #111, #2a2a35);
+  box-shadow: 1px 0 2px rgba(0,0,0,0.5);
+}
+
+/* Bord supérieur */
+.phone__top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-bottom: 8px;
+}
+.phone__grille {
+  display: flex;
+  gap: 2.5px;
+  align-items: center;
+}
+.phone__grille-dot {
+  width: 2px; height: 2px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.14);
+}
+.phone__punchhole {
+  width: 11px; height: 11px;
+  border-radius: 50%;
+  background: #08080e;
+  border: 1.5px solid #222;
+  box-shadow: inset 0 0 4px rgba(0,0,0,0.9), 0 0 0 1px rgba(255,255,255,0.04);
+}
+
+/* Écran */
+.phone__screen {
+  border-radius: 24px;
+  overflow: hidden;
+  aspect-ratio: 9 / 19.5;
+  background: var(--blue-500);
+  position: relative;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+}
+.phone__screen-poly {
+  position: absolute; inset: 0;
+  background-image:
+    repeating-linear-gradient(60deg,  rgba(255,255,255,.04) 0, rgba(255,255,255,.04) 1px, transparent 1px, transparent 28px),
+    repeating-linear-gradient(120deg, rgba(255,255,255,.04) 0, rgba(255,255,255,.04) 1px, transparent 1px, transparent 28px);
+}
+.phone__screen-glare {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 35%;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.06), transparent);
+  border-radius: 24px 24px 0 0;
+  pointer-events: none;
+}
+
+/* Barre de navigation */
+.phone__navbar {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 7px 0 2px;
+  margin-top: 7px;
+}
+.phone__nav-btn {
+  width: 20px; height: 20px;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0.45;
+}
+.phone__nav-back {
+  width: 10px; height: 10px;
+  border: 2px solid #fff;
+  border-right: none; border-top: none;
+  transform: rotate(45deg);
+  border-radius: 1px;
+}
+.phone__nav-home {
+  width: 12px; height: 12px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
+.phone__nav-rect {
+  width: 10px; height: 10px;
+  border: 2px solid #fff;
+  border-radius: 2px;
+}
+
+/* Barre gestuelle */
+.phone__bottom {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+.phone__gesture {
+  width: 52px; height: 4px;
+  border-radius: 2px;
+  background: rgba(255,255,255,0.2);
+}
+
+/* ─────────────────────────────────────────
+   Card body
+───────────────────────────────────────── */
+.project-card__body {
+  padding: 18px 18px 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.project-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.project-card__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin: 0;
+}
+.project-card__badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+.project-card__badge--web {
+  background: var(--blue-50);
+  color: #0c447c;
+}
+.project-card__badge--mobile {
+  background: var(--teal-50);
+  color: var(--teal-800);
+}
+.project-card__description {
+  font-size: 13px;
+  color: var(--gray-500);
+  line-height: 1.6;
+  margin: 0 0 12px;
+  flex: 1;
+}
+.project-card__tags {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.project-card__tag {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--blue-50);
+  color: #0c447c;
+}
+.project-card__actions {
+  display: flex;
+  gap: 10px;
+}
+.project-card__btn {
+  flex: 1;
+  padding: 9px 0;
+  border-radius: var(--radius-md);
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+.project-card__btn--primary {
+  background: #6b9aaf;
+  color: var(--white);
+  border: 2px solid var(--blue-600);
+}
+.project-card__btn--primary:hover {
+  background: #4b7b8a;
+  border-color: var(--blue-700);
+}
+.project-card__btn--outline {
+  background: transparent;
+  color: var(--blue-600);
+  border: 2px solid var(--blue-600);
+}
+.project-card__btn--outline:hover {
+  background: rgba(37,116,196,0.06);
+  border-color: var(--blue-700);
+}
+
+.project-card__btn--disabled {
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.6);
+  border-color: rgba(255, 255, 255, 0.12);
+  cursor: not-allowed;
+}
+.project-card__btn--disabled:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* GitHub button: distinct visual for repository links */
+.project-card__btn--github {
+  background: #24292e; /* GitHub brand / dark neutral */
+  color: #ffffff;
+  border: 2px solid #24292e;
+}
+.project-card__btn--github:hover {
+  background: #0f1720;
+  border-color: #0f1720;
+}
+
+/* ─────────────────────────────────────────
+   Modal demo
+───────────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1200;
+  padding: 24px;
+}
+.modal {
+  width: 100%;
+  max-width: 1100px;
+  position: relative;
+}
+.modal__content {
+  background: transparent;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 0;
+  background: rgba(0,0,0,0.45);
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal__mockup .laptop { width: min(900px, 90vw); }
+.modal__mockup .phone { width: min(360px, 260px); }
+.modal__image { display: none; }
+.modal__image img { width: 80vw; max-width: 640px; max-height: 70vh; height: auto; display: block; border-radius: 8px; box-shadow: 0 6px 20px rgba(0,0,0,0.25); object-fit: contain; }
+.modal__devices { display: flex; gap: 20px; align-items: flex-start; }
+.modal__device--laptop { flex: 1 1 65%; display:flex; justify-content:center; }
+.modal__device--phone { flex: 0 0 auto; }
+.modal__device--phone-full { display:flex; justify-content:center; }
+
+.modal__nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 1250; width: 44px; height: 44px; border-radius: 999px; background: rgba(0,0,0,0.45); color: #fff; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size: 22px; }
+.modal__nav--prev { left: 12px; }
+.modal__nav--next { right: 12px; }
+.modal__pager { position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.5); color: #fff; padding: 6px 10px; border-radius: 999px; font-size: 13px; }
+
+@media (max-width: 600px) {
+  .modal__content { padding: 12px; }
+  .modal__mockup .laptop { width: 100%; }
+  .modal__mockup .phone { width: 160px; }
+  .modal__devices { flex-direction: column; gap: 12px; }
+  .modal__close { top: 8px; right: 8px; }
+}
+
+/* ─────────────────────────────────────────
+   Mobile  ≤ 600px
+───────────────────────────────────────── */
+@media (max-width: 600px) {
+  .projects { padding: 56px 16px 72px; }
+  .projects__grid { grid-template-columns: 1fr; gap: 20px; }
+  .project-card__actions { flex-direction: column; }
+  .project-card__btn { padding: 11px 0; }
+  .phone { width: 170px; }
+  .device-wrap--phone { padding: 20px 16px 18px; }
+}
+
+/* ─────────────────────────────────────────
+   Dark mode
+───────────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --gray-50:  #1a1d27;
+    --gray-100: #1e2433;
+    --gray-200: #252b3b;
+    --gray-300: #334155;
+    --gray-500: #94a3b8;
+    --gray-700: #cbd5e1;
+    --gray-900: #f1f5f9;
+    --white:    #141926;
+    --blue-50:  #0f2240;
+    --teal-50:  #062b1f;
+    --device-body: #111118;
+    --device-border: #222230;
+    --device-button: #1a1a24;
+  }
+  .project-card { border-color: #1e2433; }
+  .projects__filter-btn { border-color: #334155; color: var(--white); }
+}
+
+/* Additional modal thumbnails & gallery button styles (appended) */
+.modal__nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 1250; width: 44px; height: 44px; border-radius: 999px; background: rgba(0,0,0,0.45); color: #fff; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size: 22px; }
+.modal__nav--prev { left: 12px; }
+.modal__nav--next { right: 12px; }
+.modal__pager { position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.5); color: #fff; padding: 6px 10px; border-radius: 999px; font-size: 13px; }
+
+.modal__thumbs {
+  display: flex;
+  gap: 8px;
+  margin: 12px 0 18px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+.modal__thumb {
+  width: 72px;
+  height: 48px;
+  border-radius: 6px;
+  padding: 3px;
+  border: 2px solid transparent;
+  background: rgba(255,255,255,0.03);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.modal__thumb img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; display: block; }
+.modal__thumb--active { border-color: #547b88; box-shadow: 0 4px 18px rgba(84,123,136,0.18); }
+.modal__thumb--placeholder { width: 100%; height: 100%; background: linear-gradient(90deg, #eef2f4, #dde6e9); border-radius: 4px; }
+
+/* project-card__btn--icon removed per user request */
+
+/* Fallback class to force mobile image view regardless of viewport (applied by JS) */
+.modal--mobile .modal__device--laptop,
+.modal--mobile .modal__device--phone-full,
+.modal--mobile .modal__devices { display: none !important; }
+.modal--mobile .modal__image { display: block !important; width: 80vw; max-width: 640px; max-height: 70vh; }
+
+/* Ensure modal content is visually centered on small screens */
+.modal--mobile {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 12px !important;
+}
+.modal--mobile .modal {
+  width: auto !important;
+  max-width: 90vw !important;
+  margin: 0 auto !important;
+}
+.modal--mobile .modal__content {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 8px !important;
+}
+.modal--mobile .modal__image {
+  margin: 0 auto !important;
+  display: block !important;
+}
+
+/* "Gestion des soutenances": mockup now matches the standard laptop/phone size
+   used by every other project (no more reduced width override). */
+  /* Adjust visible image sizing for the soutenances project: keep narrower but allow greater height */
+  .modal--soutenances .modal__image img {
+    width: 100vw;
+    max-width: 900px;
+    height: auto;
+    max-height: 80vh;
+  }
+  .modal--soutenances .modal__mockup .device__screenshot {
+    width: 100%;
+    height: 100%;
+    object-fit: fill; /* stretches the image to exactly match the mockup screen — full image visible, no empty space, no tiling/repeat */
+    object-position: center;
+    background: none;
+    display: block;
+  }
+  /* Increase laptop screen available height for soutenances modal */
+  .modal--soutenances .modal__mockup .laptop__screen {
+    max-height: 80vh;
+  }
