@@ -34,4 +34,4 @@ export const AndroidMockup = ({ imgSrc, title }) => (
   </div>
 );
 
-export default { LaptopMockup, AndroidMockup };
+// export default { LaptopMockup, AndroidMockup };
