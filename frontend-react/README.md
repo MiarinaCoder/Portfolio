@@ -18,7 +18,7 @@ Un portfolio personnel créé avec React.js, pour présenter mes compétences, m
 ```
 src/
  ├── assets/          # Images et ressources
- ├── components/      # Composants réutilisables (Navbar, Footer, ProjectCard, SkillBadge)
+ ├── components/      # Composants réutilisables (Navbar, Footer, ProjectCard, ProjectModal, SkillCard, DeviceMockup, ContactInfoCard)
  ├── pages/           # Pages principales (About, Projects, Skills, Contact)
  ├── styles/          # Fichiers CSS organisés (components / pages)
  └── App.jsx           # Point d’entrée principal
@@ -67,7 +67,7 @@ Le projet sera disponible sur : [http://localhost:3000](http://localhost:3000)
 ### Version 1.0
 
 * Création de la structure React
-* Composants principaux : Navbar, Footer, ProjectCard, SkillBadge
+* Composants principaux : Navbar, Footer, ProjectCard, ProjectModal, SkillCard, DeviceMockup, ContactInfoCard
 * Pages principales : About, Projects, Skills, Contact
 * Style responsive et moderne
 * Intégration d’une image de profil

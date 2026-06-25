@@ -98,7 +98,7 @@ const projectsData = [
       "web-portfolio/3-projets.png",
       "web-portfolio/4-contact.png",
     ],
-    codeUrl: "#",
+    codeUrl: "https://github.com/MiarinaCoder/Portfolio.git",
   },
 ];
 
